@@ -1,260 +1,728 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Metadatos para GitHub/SEO -->
-    <meta name="description" content="Modelado de Sistema Académico - Grupo GAAAA - Ingeniería de Sistemas UAC">
-    <meta name="author" content="Grupo GAAAA">
-    <title>Infografía Completa: Grupo GAAAA - UAC</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; color: #1f2937; }
-        .gradient-uac { background: linear-gradient(135deg, #003366 0%, #0055aa 100%); }
-        .table-container { scrollbar-width: thin; scrollbar-color: #cbd5e1 #f8fafc; }
-        .card-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07); }
-        .badge-group { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); }
-        
-        /* Estilos de impresión para generar PDF */
-        @media print {
-            .no-print { display: none; }
-            body { background: white; padding: 0; }
-            .max-w-7xl { max-width: 100%; width: 100%; margin: 0; }
-            header, footer, .bg-white { border: none !important; box-shadow: none !important; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía B2B Combustibles</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul:    #0f3460;
+    --azul2:   #16213e;
+    --acento:  #e94560;
+    --oro:     #f5a623;
+    --verde:   #00b894;
+    --morado:  #6c5ce7;
+    --celeste: #0984e3;
+    --gris:    #f8f9ff;
+    --texto:   #2d3436;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gris);
+    color: var(--texto);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--azul2) 0%, var(--azul) 60%, #1a4a8a 100%);
+    color: white;
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 30px,
+      rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px
+    );
+  }
+  .hero .badge {
+    display: inline-block;
+    background: var(--acento);
+    color: white;
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8em, 4vw, 3em);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--oro); }
+  .hero p {
+    font-size: 1em;
+    opacity: 0.8;
+    max-width: 640px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    font-weight: 900;
+    color: var(--oro);
+    display: block;
+  }
+  .stat .lbl {
+    font-size: 0.75em;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 30px;
+  }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 6px;
+  }
+  .sec-line {
+    width: 50px; height: 3px;
+    background: var(--acento);
+    border-radius: 2px;
+    margin-bottom: 30px;
+  }
+
+  /* ── DEFINICION B2B ── */
+  .def-box {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 40px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .def-item {
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.2s;
+  }
+  .def-item:hover { transform: translateY(-4px); }
+  .def-icon {
+    font-size: 2.4em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .def-item h3 {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: var(--azul);
+  }
+  .def-item p {
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: #636e72;
+  }
+  .def-item.a { background: #fff5f7; }
+  .def-item.b { background: #f0f7ff; }
+  .def-item.c { background: #f0fff8; }
+
+  /* ── FLUJO ── */
+  .flujo {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 50px;
+    overflow-x: auto;
+  }
+  .flujo-step {
+    flex: 1;
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .flujo-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 28px;
+    font-size: 1.4em;
+    color: #b2bec3;
+    z-index: 2;
+  }
+  .flujo-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .flujo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 14px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+    border-top: 3px solid;
+    flex: 1;
+  }
+  .flujo-card h4 {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: var(--azul);
+    margin-bottom: 6px;
+  }
+  .flujo-card p {
+    font-size: 0.76em;
+    color: #636e72;
+    line-height: 1.5;
+  }
+
+  /* step colors */
+  .s1 .flujo-num { background: var(--acento); }
+  .s1 .flujo-card { border-color: var(--acento); }
+  .s2 .flujo-num { background: var(--celeste); }
+  .s2 .flujo-card { border-color: var(--celeste); }
+  .s3 .flujo-num { background: var(--morado); }
+  .s3 .flujo-card { border-color: var(--morado); }
+  .s4 .flujo-num { background: var(--oro); }
+  .s4 .flujo-card { border-color: var(--oro); }
+  .s5 .flujo-num { background: var(--verde); }
+  .s5 .flujo-card { border-color: var(--verde); }
+  .s6 .flujo-num { background: #fd79a8; }
+  .s6 .flujo-card { border-color: #fd79a8; }
+  .s7 .flujo-num { background: #00cec9; }
+  .s7 .flujo-card { border-color: #00cec9; }
+
+  /* ── ENTIDADES ── */
+  .entidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-bottom: 50px;
+  }
+  .ent-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .ent-header {
+    padding: 14px 18px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ent-header .ico { font-size: 1.3em; }
+  .ent-body { padding: 14px 18px; }
+  .ent-attr {
+    font-size: 0.78em;
+    color: #636e72;
+    padding: 3px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ent-attr:last-child { border: none; }
+  .ent-attr::before { content: '—'; color: #b2bec3; font-size: 0.9em; }
+
+  /* ── RELACIONES ── */
+  .rel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+  .rel-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border-left: 4px solid;
+  }
+  .rel-badge {
+    background: var(--azul);
+    color: white;
+    font-family: 'DM Sans', monospace;
+    font-size: 0.72em;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .rel-info h4 {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: var(--azul);
+    margin-bottom: 4px;
+  }
+  .rel-info p {
+    font-size: 0.78em;
+    color: #636e72;
+    line-height: 1.5;
+  }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    background: linear-gradient(135deg, var(--azul2), var(--azul));
+    border-radius: 20px;
+    padding: 50px 50px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .conclusion::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 14em;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .conclusion p {
+    font-size: 1.05em;
+    line-height: 1.85;
+    font-weight: 300;
+    max-width: 820px;
+    position: relative;
+    z-index: 1;
+  }
+  .conclusion p strong { color: var(--oro); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  .foot {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.8em;
+    color: #b2bec3;
+    border-top: 1px solid #e8ecf0;
+  }
+  .foot strong { color: var(--azul); }
+
+  @media (max-width: 700px) {
+    .def-box { grid-template-columns: 1fr; }
+    .flujo { flex-direction: column; }
+    .flujo-step::after { display: none; }
+    .conclusion { padding: 30px 24px; }
+  }
+</style>
 </head>
-<body class="py-6 px-4">
+<body>
 
-    <!-- Botón de Acción para GitHub (No se imprime) -->
-    <div class="max-w-7xl mx-auto mb-4 flex justify-end no-print">
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-md flex items-center gap-2 transition-all">
-            <i class="fas fa-file-pdf"></i> Guardar como PDF
-        </button>
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="badge">Infografía · Comercio Electrónico</div>
+  <h1>Modelo <span>B2B</span> Aplicado a la<br>Distribución de Combustibles</h1>
+  <p>Sistema de gestión comercial digital entre empresas proveedoras y compradoras de combustible en el Perú — Caso Petroperú y LlamitaRapi</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="num">8</span><span class="lbl">Entidades</span></div>
+    <div class="stat"><span class="num">7</span><span class="lbl">Relaciones</span></div>
+    <div class="stat"><span class="num">B2B</span><span class="lbl">Modelo</span></div>
+    <div class="stat"><span class="num">100%</span><span class="lbl">Digital</span></div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- ── QUÉ ES B2B ── -->
+  <div class="sec-title">¿Qué es el Comercio Electrónico B2B?</div>
+  <div class="sec-line"></div>
+  <div class="def-box">
+    <div class="def-item a">
+      <span class="def-icon">🏭</span>
+      <h3>Business to Business</h3>
+      <p>Transacciones comerciales realizadas exclusivamente entre empresas, sin intervención del consumidor final.</p>
+    </div>
+    <div class="def-item b">
+      <span class="def-icon">📦</span>
+      <h3>Volúmenes Elevados</h3>
+      <p>Las compras son en grandes cantidades, con precios negociados y contratos de largo plazo entre las partes.</p>
+    </div>
+    <div class="def-item c">
+      <span class="def-icon">⚡</span>
+      <h3>Procesos Digitales</h3>
+      <p>Todo el ciclo — desde el pedido hasta el pago — se gestiona mediante plataformas digitales integradas.</p>
+    </div>
+  </div>
+
+  <!-- ── FLUJO DEL PROCESO ── -->
+  <div class="sec-title">Flujo del Proceso B2B</div>
+  <div class="sec-line"></div>
+  <div class="flujo">
+    <div class="flujo-step s1">
+      <div class="flujo-num">1</div>
+      <div class="flujo-card">
+        <h4>Contrato</h4>
+        <p>Se firman condiciones, precios y volumen acordado entre ambas empresas</p>
+      </div>
+    </div>
+    <div class="flujo-step s2">
+      <div class="flujo-num">2</div>
+      <div class="flujo-card">
+        <h4>Catálogo</h4>
+        <p>La compradora consulta productos disponibles y precios referenciales</p>
+      </div>
+    </div>
+    <div class="flujo-step s3">
+      <div class="flujo-num">3</div>
+      <div class="flujo-card">
+        <h4>Orden de Compra</h4>
+        <p>LlamitaRapi genera digitalmente su pedido de combustible</p>
+      </div>
+    </div>
+    <div class="flujo-step s4">
+      <div class="flujo-num">4</div>
+      <div class="flujo-card">
+        <h4>Factura SUNAT</h4>
+        <p>Se emite automáticamente una factura electrónica válida</p>
+      </div>
+    </div>
+    <div class="flujo-step s5">
+      <div class="flujo-num">5</div>
+      <div class="flujo-card">
+        <h4>Entrega</h4>
+        <p>Cisternas certificadas despachan el combustible con trazabilidad</p>
+      </div>
+    </div>
+    <div class="flujo-step s6">
+      <div class="flujo-num">6</div>
+      <div class="flujo-card">
+        <h4>Pago</h4>
+        <p>Se cancela la factura en una o varias cuotas según el contrato</p>
+      </div>
+    </div>
+    <div class="flujo-step s7">
+      <div class="flujo-num">↺</div>
+      <div class="flujo-card">
+        <h4>Nuevo Ciclo</h4>
+        <p>El proceso se repite generando un historial de operaciones</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ENTIDADES ── -->
+  <div class="sec-title">Entidades del Modelo ERD</div>
+  <div class="sec-line"></div>
+  <div class="entidades">
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#0f3460;">
+        <span class="ico">🏢</span> EmpresaProveedor
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">razonSocial</div>
+        <div class="ent-attr">RUC</div>
+        <div class="ent-attr">tipoCombustible</div>
+        <div class="ent-attr">capacidadAlmacenamiento</div>
+        <div class="ent-attr">licenciaOsinergmin</div>
+      </div>
     </div>
 
-    <div class="max-w-7xl mx-auto space-y-8">
-        
-        <!-- Header Principal con Nombre del Grupo -->
-        <header class="gradient-uac rounded-3xl p-8 text-white text-center shadow-xl relative overflow-hidden">
-            <div class="absolute -right-10 -top-10 opacity-10 text-9xl">
-                <i class="fas fa-database"></i>
-            </div>
-            <div class="relative z-10">
-                <div class="inline-block badge-group px-6 py-2 rounded-full mb-4 animate-bounce">
-                    <span class="text-xl font-bold tracking-[0.2em]">GRUPO: GAAAA</span>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Modelado de Sistema Académico UAC</h1>
-                <div class="flex flex-wrap justify-center gap-6 text-blue-100">
-                    <p class="flex items-center"><i class="fas fa-graduation-cap mr-2"></i> EP. Ingeniería de Sistemas</p>
-                    <p class="flex items-center"><i class="fas fa-book mr-2"></i> Modelado de Base de Datos - 5</p>
-                    <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Cusco - 2026</p>
-                </div>
-            </div>
-        </header>
-
-        <!-- Sección 1: Estructura y Docentes -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- Columna: Modelo Lógico -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-gray-100">
-                <h2 class="text-xl font-bold mb-6 flex items-center text-blue-900 border-b pb-2">
-                    <i class="fas fa-sitemap mr-3 text-blue-600"></i> Diccionario de Entidades
-                </h2>
-                <div class="space-y-4">
-                    <div class="p-3 bg-blue-50 rounded-lg">
-                        <span class="font-bold block text-sm text-blue-900">TblAlumno</span>
-                        <p class="text-[11px] text-gray-600">CodAlumno (PK), DNI, Nombres, Apellidos, Carrera, Ciclo</p>
-                    </div>
-                    <div class="p-3 bg-green-50 rounded-lg">
-                        <span class="font-bold block text-sm text-green-900">TblDocente</span>
-                        <p class="text-[11px] text-gray-600">id_docente (PK), DNI, Nombres, Apellidos, Especialidad</p>
-                    </div>
-                    <div class="p-3 bg-purple-50 rounded-lg">
-                        <span class="font-bold block text-sm text-purple-900">TblAsignatura</span>
-                        <p class="text-[11px] text-gray-600">id_asignatura (PK), Nombre, Créditos, Ciclo</p>
-                    </div>
-                    <div class="p-3 bg-red-50 rounded-lg">
-                        <span class="font-bold block text-sm text-red-900">TblNota</span>
-                        <p class="text-[11px] text-gray-600">CodNota (PK), id_alumno, id_asignatura, Parcial, Final</p>
-                    </div>
-                    <div class="p-3 bg-yellow-50 rounded-lg">
-                        <span class="font-bold block text-sm text-yellow-900">TblCarga</span>
-                        <p class="text-[11px] text-gray-600">id_carga (PK), id_docente, id_asignatura, Semestre</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Columna: Listado de Docentes -->
-            <div class="lg:col-span-2 bg-white rounded-2xl p-6 card-shadow border border-gray-100">
-                <h2 class="text-xl font-bold mb-6 flex items-center text-blue-900 border-b pb-2">
-                    <i class="fas fa-chalkboard-teacher mr-3 text-blue-600"></i> Personal Docente Registrado
-                </h2>
-                <div class="overflow-x-auto table-container">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
-                                <th class="p-3 text-left">Cod</th>
-                                <th class="p-3 text-left">DNI</th>
-                                <th class="p-3 text-left">Apellidos y Nombres</th>
-                                <th class="p-3 text-left">Especialidad</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            <tr><td class="p-2 font-mono text-blue-600">D001</td><td class="p-2">40111101</td><td class="p-2">Salas, Jorge</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D002</td><td class="p-2">40111102</td><td class="p-2">Vargas, Elena</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D003</td><td class="p-2">40111103</td><td class="p-2">Núñez, Ricardo</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D004</td><td class="p-2">40111104</td><td class="p-2">López, Patricia</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D005</td><td class="p-2">40111105</td><td class="p-2">Gutiérrez, Manuel</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D006</td><td class="p-2">40111106</td><td class="p-2">Flores, Silvia</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D007</td><td class="p-2">40111107</td><td class="p-2">Molina, Andrés</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D008</td><td class="p-2">40111108</td><td class="p-2">Paredes, Teresa</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D009</td><td class="p-2">40111109</td><td class="p-2">Ramos, Hugo</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                            <tr><td class="p-2 font-mono text-blue-600">D110</td><td class="p-2">40111110</td><td class="p-2">Castillo, Verónica</td><td class="p-2 italic text-gray-500">Sistemas</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección 2: Estudiantes y Cursos -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <!-- Estudiantes -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-gray-100">
-                <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                    <i class="fas fa-users mr-3 text-blue-600"></i> Padrón de Estudiantes (VII Ciclo)
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A001: David Oblitas</span> <span class="text-blue-600 font-bold">16.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A002: Juan Flores</span> <span class="text-blue-600 font-bold">15.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A003: Gabriel Condori</span> <span class="text-blue-600 font-bold">14.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A004: Dominga Perez</span> <span class="text-blue-600 font-bold">17.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A005: Sabadina Sanchez</span> <span class="text-blue-600 font-bold">13.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A006: Rosa Mamani</span> <span class="text-blue-600 font-bold">18.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A007: Edwin Quispe</span> <span class="text-blue-600 font-bold">15.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A008: Gael Prado</span> <span class="text-blue-600 font-bold">14.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A009: Gabi Mogrobejo</span> <span class="text-blue-600 font-bold">13.0</span></div>
-                    <div class="flex justify-between p-2 border-b hover:bg-blue-50 transition-colors"><span>A010: Gael Andia</span> <span class="text-blue-600 font-bold">17.0</span></div>
-                </div>
-            </div>
-
-            <!-- Asignaturas -->
-            <div class="bg-white rounded-2xl p-6 card-shadow border border-gray-100">
-                <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                    <i class="fas fa-book-open mr-3 text-blue-600"></i> Catálogo de Asignaturas (UAC-Sistemas)
-                </h2>
-                <div class="space-y-2 max-h-[400px] overflow-y-auto pr-2 custom-scroll">
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Base de Datos</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">4 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">VI</span></div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Matemática Básica</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">3 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">I</span></div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Contabilidad General</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">4 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">IV</span></div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Derecho Civil</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">4 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">VII</span></div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Administración General</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">3 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">II</span></div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-4 border-blue-500">
-                        <span class="font-medium text-gray-700">Diseño Arquitectónico</span>
-                        <div class="text-right"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold">3 CRÉD.</span> <span class="text-gray-500 text-xs ml-2">III</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección 3: Infraestructura y Docencia (Semestre 2024-1) -->
-        <div class="bg-gray-800 rounded-3xl p-8 text-white shadow-inner">
-            <h2 class="text-2xl font-bold mb-8 text-center flex justify-center items-center">
-                <i class="fas fa-calendar-check mr-4 text-yellow-400 animate-pulse"></i> Planificación Académica Semestre 2024-I
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Pabellón A-1 -->
-                <div class="border border-gray-700 p-4 rounded-xl bg-gray-900/50 hover:border-yellow-400 transition-colors">
-                    <h4 class="text-yellow-400 font-bold mb-2">Pabellón A (Piso 1)</h4>
-                    <p class="text-[10px] opacity-70 mb-4 tracking-widest uppercase">Infraestructura Crítica</p>
-                    <div class="flex gap-2 flex-wrap text-[10px]">
-                        <span class="border border-gray-600 px-2 py-1 rounded">S001 (30)</span>
-                        <span class="border border-green-600 px-2 py-1 rounded font-bold bg-green-900/40">S007 (50)</span>
-                        <span class="border border-gray-600 px-2 py-1 rounded">S009 (40)</span>
-                    </div>
-                </div>
-                <!-- Pabellón A-2 -->
-                <div class="border border-gray-700 p-4 rounded-xl bg-gray-900/50 hover:border-yellow-400 transition-colors">
-                    <h4 class="text-yellow-400 font-bold mb-2">Pabellón A (Piso 2)</h4>
-                    <p class="text-[10px] opacity-70 mb-4 tracking-widest uppercase">Infraestructura Crítica</p>
-                    <div class="flex gap-2 flex-wrap text-[10px]">
-                        <span class="border border-gray-600 px-2 py-1 rounded">S002 (35)</span>
-                        <span class="border border-blue-600 px-2 py-1 rounded font-bold bg-blue-900/40">S004 (45)</span>
-                        <span class="border border-gray-600 px-2 py-1 rounded">S008 (45)</span>
-                    </div>
-                </div>
-                <!-- Estadísticas -->
-                <div class="border border-gray-700 p-4 rounded-xl bg-gray-900/50 flex flex-col items-center justify-center group">
-                    <span class="text-4xl font-black group-hover:text-yellow-400 transition-colors">100%</span>
-                    <span class="text-[10px] uppercase tracking-widest text-gray-400 text-center">Carga Docente Ejecutada</span>
-                </div>
-                <!-- Promedio -->
-                <div class="border border-gray-700 p-4 rounded-xl bg-gray-900/50 flex flex-col items-center justify-center group">
-                    <span class="text-4xl font-black group-hover:text-yellow-400 transition-colors">15.0</span>
-                    <span class="text-[10px] uppercase tracking-widest text-gray-400 text-center">Promedio General Ponderado</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nueva Sección: Stack de Tecnologías para GitHub -->
-        <div class="bg-white rounded-2xl p-6 border-dashed border-2 border-gray-200 text-center no-print">
-            <h3 class="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-4">Tecnologías de Modelado e Implementación</h3>
-            <div class="flex justify-center gap-8 text-2xl text-gray-300">
-                <div class="flex flex-col items-center gap-1"><i class="fas fa-table text-blue-500"></i><span class="text-[10px] font-bold text-gray-500">Power Pivot</span></div>
-                <div class="flex flex-col items-center gap-1"><i class="fas fa-code text-blue-400"></i><span class="text-[10px] font-bold text-gray-500">Tailwind CSS</span></div>
-                <div class="flex flex-col items-center gap-1"><i class="fas fa-file-excel text-green-600"></i><span class="text-[10px] font-bold text-gray-500">MS Excel</span></div>
-                <div class="flex flex-col items-center gap-1"><i class="fas fa-project-diagram text-purple-500"></i><span class="text-[10px] font-bold text-gray-500">Database Design</span></div>
-            </div>
-        </div>
-
-        <!-- Créditos y Profesionales -->
-        <footer class="bg-white rounded-2xl p-8 card-shadow border border-gray-100">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-16 h-16 gradient-uac rounded-2xl flex items-center justify-center text-white shadow-lg">
-                        <i class="fas fa-university text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-blue-900">Mg. Ing. Hugo Espetia Huamanga</h3>
-                        <p class="text-gray-500 text-sm">Catedrático de la Escuela Profesional de Ingeniería de Sistemas</p>
-                    </div>
-                </div>
-                <div class="flex flex-col items-end">
-                    <div class="text-right">
-                        <div class="bg-blue-900 text-white px-4 py-1 rounded-full text-xs font-bold mb-3 inline-block">
-                            GRUPO GAAAA
-                        </div>
-                        <div class="grid grid-cols-1 gap-1 text-[13px] font-semibold text-gray-700">
-                            <span><i class="fas fa-user-circle mr-2 text-blue-600"></i>Chuquitapa Flores Kefren Darly</span>
-                            <span><i class="fas fa-user-circle mr-2 text-blue-600"></i>Achahui Zans Sebastian Cristobal</span>
-                            <span><i class="fas fa-user-circle mr-2 text-blue-600"></i>Portugal Castillo Olger</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-4 border-t border-gray-100 text-center text-[10px] text-gray-400 tracking-[0.3em] uppercase">
-                &copy; 2026 Universidad Andina del Cusco - Facultad de Ingeniería y Arquitectura
-            </div>
-        </footer>
+    <div class="ent-card">
+      <div class="ent-header" style="background:#e94560;">
+        <span class="ico">🏗️</span> EmpresaCompradora
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">razonSocial (LlamitaRapi)</div>
+        <div class="ent-attr">RUC</div>
+        <div class="ent-attr">sector</div>
+        <div class="ent-attr">limiteCredito</div>
+        <div class="ent-attr">estadoCuenta</div>
+      </div>
     </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#15803d;">
+        <span class="ico">📄</span> Contrato
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">fechaInicio / fechaFin</div>
+        <div class="ent-attr">condicionesPago</div>
+        <div class="ent-attr">volumenAcordado</div>
+        <div class="ent-attr">precioBase</div>
+        <div class="ent-attr">estadoContrato</div>
+      </div>
+    </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#a16207;">
+        <span class="ico">📋</span> Catalogo
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">codigoProducto</div>
+        <div class="ent-attr">nombreProducto</div>
+        <div class="ent-attr">tipoCombustible</div>
+        <div class="ent-attr">precioReferencial</div>
+        <div class="ent-attr">disponibilidad</div>
+      </div>
+    </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#0984e3;">
+        <span class="ico">🛒</span> OrdenDeCompra
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">fechaHoraOrden</div>
+        <div class="ent-attr">cantidadSolicitada</div>
+        <div class="ent-attr">precioUnitario</div>
+        <div class="ent-attr">igv / total</div>
+        <div class="ent-attr">estadoOrden</div>
+      </div>
+    </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#b91c1c;">
+        <span class="ico">🧾</span> Factura
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">fechaEmision</div>
+        <div class="ent-attr">totalFactura</div>
+        <div class="ent-attr">estadoPago</div>
+        <div class="ent-attr">fechaVencimiento</div>
+        <div class="ent-attr">numeroSunat</div>
+      </div>
+    </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#7e22ce;">
+        <span class="ico">🚛</span> LogisticaEntrega
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">fechaEntrega</div>
+        <div class="ent-attr">volumenEntregado</div>
+        <div class="ent-attr">placaCisterna</div>
+        <div class="ent-attr">conductorAsignado</div>
+        <div class="ent-attr">estadoEntrega</div>
+      </div>
+    </div>
+
+    <div class="ent-card">
+      <div class="ent-header" style="background:#c2410c;">
+        <span class="ico">💳</span> Pago
+      </div>
+      <div class="ent-body">
+        <div class="ent-attr">fechaPago</div>
+        <div class="ent-attr">montoPagado</div>
+        <div class="ent-attr">metodoPago</div>
+        <div class="ent-attr">nroOperacion</div>
+        <div class="ent-attr">estadoPago</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── RELACIONES ── -->
+  <div class="sec-title">Relaciones y Cardinalidades</div>
+  <div class="sec-line"></div>
+  <div class="rel-grid">
+    <div class="rel-card" style="border-color:#0f3460;">
+      <div class="rel-badge">1 : 1..N</div>
+      <div class="rel-info">
+        <h4>EmpresaProveedor → Contrato</h4>
+        <p>Un proveedor firma uno o muchos contratos. Cada contrato pertenece a un solo proveedor.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#e94560;">
+      <div class="rel-badge">1 : 1..N</div>
+      <div class="rel-info">
+        <h4>EmpresaCompradora → Contrato</h4>
+        <p>Una compradora firma uno o muchos contratos. Cada contrato es de una sola empresa.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#15803d;">
+      <div class="rel-badge">1 : 1..N</div>
+      <div class="rel-info">
+        <h4>Contrato → Catalogo</h4>
+        <p>Un contrato incluye uno o más productos del catálogo disponible.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#a16207;">
+      <div class="rel-badge">1 : 1..N</div>
+      <div class="rel-info">
+        <h4>Catalogo → OrdenDeCompra</h4>
+        <p>Un producto del catálogo puede ser pedido en una o muchas órdenes a lo largo del tiempo.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#0984e3;">
+      <div class="rel-badge">1 : 1</div>
+      <div class="rel-info">
+        <h4>OrdenDeCompra → Factura</h4>
+        <p>Cada orden genera exactamente una factura electrónica válida ante SUNAT.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#7e22ce;">
+      <div class="rel-badge">1 : 1..N</div>
+      <div class="rel-info">
+        <h4>OrdenDeCompra → LogisticaEntrega</h4>
+        <p>Una orden puede ejecutarse en una o varias entregas parciales con cisternas.</p>
+      </div>
+    </div>
+    <div class="rel-card" style="border-color:#c2410c;">
+      <div class="rel-badge">1 : 0..N</div>
+      <div class="rel-info">
+        <h4>Factura → Pago</h4>
+        <p>Una factura puede tener cero pagos (pendiente) o varios pagos parciales hasta cancelarse.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONCLUSION ── -->
+  <div class="sec-title">Conclusión</div>
+  <div class="sec-line"></div>
+  <div class="conclusion">
+    <p>
+      El modelo de comercio electrónico B2B permite que dos empresas, como
+      <strong>Petroperú</strong> y <strong>LlamitaRapi</strong>, realicen sus operaciones
+      de forma digital, ordenada y con respaldo legal. Todo comienza con un
+      <strong>Contrato</strong> que establece las condiciones de compra, seguido de un
+      <strong>Catálogo</strong> que define los productos disponibles. Cuando LlamitaRapi
+      necesita combustible, genera una <strong>Orden de Compra</strong> que produce
+      automáticamente una <strong>Factura Electrónica</strong> válida ante SUNAT.
+      El combustible es despachado mediante cisternas certificadas y cada entrega queda
+      registrada. Finalmente, el <strong>Pago</strong> cierra el ciclo financiero.
+      En conjunto, este modelo garantiza <strong>transparencia, eficiencia y cumplimiento
+      normativo</strong> en cada operación, fortaleciendo una relación comercial sólida
+      y duradera entre ambas empresas.
+    </p>
+  </div>
+
+</div>
+
+  <!-- ── EQUIPO ── -->
+  <div class="sec-title">Equipo de Trabajo</div>
+  <div class="sec-line"></div>
+
+  <!-- Info institucional -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:30px;">
+    <div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 3px 16px rgba(0,0,0,0.06);border-top:4px solid #0f3460;text-align:center;">
+      <div style="font-size:2em;margin-bottom:8px;">🎓</div>
+      <div style="font-size:0.72em;text-transform:uppercase;letter-spacing:2px;color:#b2bec3;margin-bottom:4px;">Universidad</div>
+      <div style="font-weight:700;color:#0f3460;font-size:0.9em;line-height:1.4;">Universidad Andina del Cusco</div>
+    </div>
+    <div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 3px 16px rgba(0,0,0,0.06);border-top:4px solid #e94560;text-align:center;">
+      <div style="font-size:2em;margin-bottom:8px;">🏛️</div>
+      <div style="font-size:0.72em;text-transform:uppercase;letter-spacing:2px;color:#b2bec3;margin-bottom:4px;">Facultad</div>
+      <div style="font-weight:700;color:#0f3460;font-size:0.9em;line-height:1.4;">Ingeniería y Arquitectura</div>
+    </div>
+    <div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 3px 16px rgba(0,0,0,0.06);border-top:4px solid #00b894;text-align:center;">
+      <div style="font-size:2em;margin-bottom:8px;">💻</div>
+      <div style="font-size:0.72em;text-transform:uppercase;letter-spacing:2px;color:#b2bec3;margin-bottom:4px;">Escuela</div>
+      <div style="font-weight:700;color:#0f3460;font-size:0.9em;line-height:1.4;">Ingeniería de Sistemas</div>
+    </div>
+    <div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 3px 16px rgba(0,0,0,0.06);border-top:4px solid #f5a623;text-align:center;">
+      <div style="font-size:2em;margin-bottom:8px;">📚</div>
+      <div style="font-size:0.72em;text-transform:uppercase;letter-spacing:2px;color:#b2bec3;margin-bottom:4px;">Docente</div>
+      <div style="font-weight:700;color:#0f3460;font-size:0.9em;line-height:1.4;">Ing. Hugo Espetia Huamanga</div>
+    </div>
+    <div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 3px 16px rgba(0,0,0,0.06);border-top:4px solid #6c5ce7;text-align:center;">
+      <div style="font-size:2em;margin-bottom:8px;">📅</div>
+      <div style="font-size:0.72em;text-transform:uppercase;letter-spacing:2px;color:#b2bec3;margin-bottom:4px;">Año</div>
+      <div style="font-weight:700;color:#0f3460;font-size:0.9em;line-height:1.4;">Cusco — 2026</div>
+    </div>
+  </div>
+
+  <!-- Integrantes -->
+  <div style="background:linear-gradient(135deg,#0f3460,#16213e);border-radius:20px;padding:40px;margin-bottom:50px;">
+    <div style="text-align:center;margin-bottom:30px;">
+      <span style="background:#e94560;color:white;font-size:0.72em;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:20px;">Equipo GAAAAA</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+
+      <!-- Integrante 1 -->
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px 24px;display:flex;align-items:center;gap:18px;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e94560,#fd79a8);display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0;">👨‍💻</div>
+        <div>
+          <div style="font-size:0.7em;text-transform:uppercase;letter-spacing:2px;color:#74b9ff;margin-bottom:3px;">Integrante</div>
+          <div style="color:white;font-weight:600;font-size:0.95em;line-height:1.3;">Achahui Zans<br>Sebastian Cristobal</div>
+          <div style="margin-top:6px;">
+            <span style="background:rgba(229,69,96,0.25);color:#ff7675;font-size:0.7em;padding:2px 10px;border-radius:10px;font-weight:600;">100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 2 -->
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px 24px;display:flex;align-items:center;gap:18px;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a29bfe);display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0;">⭐</div>
+        <div>
+          <div style="font-size:0.7em;text-transform:uppercase;letter-spacing:2px;color:#74b9ff;margin-bottom:3px;">Scrum Master</div>
+          <div style="color:white;font-weight:600;font-size:0.95em;line-height:1.3;">Chuquitapa Flores<br>Kefren Darly</div>
+          <div style="margin-top:6px;">
+            <span style="background:rgba(108,92,231,0.3);color:#a29bfe;font-size:0.7em;padding:2px 10px;border-radius:10px;font-weight:600;">100% · Scrum Master</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 3 -->
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px 24px;display:flex;align-items:center;gap:18px;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#00b894,#55efc4);display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0;">👨‍💻</div>
+        <div>
+          <div style="font-size:0.7em;text-transform:uppercase;letter-spacing:2px;color:#74b9ff;margin-bottom:3px;">Integrante</div>
+          <div style="color:white;font-weight:600;font-size:0.95em;line-height:1.3;">Portugal Castillo<br>Olger</div>
+          <div style="margin-top:6px;">
+            <span style="background:rgba(0,184,148,0.25);color:#55efc4;font-size:0.7em;padding:2px 10px;border-radius:10px;font-weight:600;">100%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <strong>Universidad Andina del Cusco</strong> · Facultad de Ingeniería y Arquitectura ·
+  Escuela de Ingeniería de Sistemas<br>
+  Equipo GAAAAA · Docente: Ing. Hugo Espetia Huamanga · Cusco, 2026
+</div>
 
 </body>
 </html>
